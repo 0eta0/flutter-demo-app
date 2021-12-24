@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:demo_app/views/settings/theme/theme_mode.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
+
+  @override
+  _SettingsState createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  ThemeMode _themeMode = ThemeMode.system;
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +18,18 @@ class Settings extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.lightbulb),
           title: const Text("Dark/Light Mode"),
-          onTap: () => {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const ThemeModeSelectionPage(),
-            )),
+          trailing: Text(
+            (_themeMode == ThemeMode.system)
+            ? "System"
+            : (_themeMode == ThemeMode.light) ? "Light" : "Dark"
+          ),
+          onTap: () async {
+            var mode = await Navigator.of(context).push<ThemeMode>(
+              MaterialPageRoute(
+                builder: (context) => ThemeModeSelectionPage(mode: _themeMode),
+              ),
+            );
+            setState(() => _themeMode = mode!);
           },
         ),
         SwitchListTile(

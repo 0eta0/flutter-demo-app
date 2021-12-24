@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:demo_app/list_components/poke_list_item.dart';
+import 'package:demo_app/views/poke_list.dart';
+import 'package:demo_app/views/settings.dart';
 
-class TopPage extends StatelessWidget {
+class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);
+
+  @override
+  TopPageState createState() => TopPageState();
+}
+
+class TopPageState extends State<TopPage> {
+  int currentNb = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ListView.builder(
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-          itemCount: 898,
-          itemBuilder: (context, index) => PokeListItem(index: index)
-        ),
+        child: currentNb == 0 ? const PokeList() : const Settings(),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) => {},
+        onTap: (index) => {
+          setState(
+            () => currentNb = index,
+          )
+        },
+        currentIndex: currentNb,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),

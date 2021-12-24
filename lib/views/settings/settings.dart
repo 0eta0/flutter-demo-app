@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:demo_app/views/settings/theme/theme_mode.dart';
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
@@ -7,9 +8,14 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const ListTile(
-          leading: Icon(Icons.lightbulb),
-          title: Text("Dark/Light Mode"),
+        ListTile(
+          leading: const Icon(Icons.lightbulb),
+          title: const Text("Dark/Light Mode"),
+          onTap: () => {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const ThemeModeSelectionPage(),
+            )),
+          },
         ),
         SwitchListTile(
           title: const Text("Switch"),

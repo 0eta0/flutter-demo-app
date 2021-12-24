@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo_app/views/poke_detail.dart';
+import 'package:demo_app/views/pokemon/poke_detail.dart';
 
 class PokeListItem extends StatelessWidget {
   const PokeListItem({Key? key, required this.index}) : super(key: key);

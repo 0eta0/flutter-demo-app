@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:demo_app/views/poke_list.dart';
-import 'package:demo_app/views/settings.dart';
+import 'package:demo_app/views/pokemon/poke_list.dart';
+import 'package:demo_app/views/settings/settings.dart';
 
 class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);

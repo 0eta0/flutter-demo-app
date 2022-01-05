@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:demo_app/views/settings/theme/theme_mode.dart';
 import 'package:demo_app/utils/preferences.dart';
-import 'package:demo_app/utils/ThemeModeNotifier.dart';
+import 'package:demo_app/utils/thememode_notifier.dart';
 import 'package:provider/provider.dart';
 
 class Settings extends StatefulWidget {

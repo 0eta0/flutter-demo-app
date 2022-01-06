@@ -1,6 +1,6 @@
 import 'package:demo_app/consts/poke_api.dart';
-import 'package:demo_app/utils/favorite_notifier.dart';
-import 'package:demo_app/utils/pokemon_notifier.dart';
+import 'package:demo_app/objects/favorite_notifier.dart';
+import 'package:demo_app/objects/pokemon_notifier.dart';
 import 'package:demo_app/views/bottom_sheet/viewmode_bottomsheet.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_app/views/pokemon/poke_list_item.dart';
@@ -67,7 +67,7 @@ class _PokeListState extends State<PokeList> {
       builder: (context, favs, child) => Column(
       children: [
         Container(
-          height: 24,
+          height: 40,
           alignment: Alignment.topRight,
           child: IconButton(
             padding: const EdgeInsets.all(0),
@@ -123,7 +123,7 @@ class _PokeListState extends State<PokeList> {
                     itemBuilder: (context, index) {
                       if (index == itemCount(favs.favs.length, _currentPage)) {
                         return Padding(
-                          padding: const EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(0),
                           child: OutlinedButton(
                             child: const Text('more'),
                             style: OutlinedButton.styleFrom(

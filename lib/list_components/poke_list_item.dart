@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:demo_app/views/pokemon/poke_detail.dart';
-import 'package:demo_app/networks/pokemon/pokemon_model.dart';
+import 'package:demo_app/objects/pokemon_model.dart';
 import 'package:demo_app/consts/poke_colors.dart';
 
 class PokeListItem extends StatelessWidget {

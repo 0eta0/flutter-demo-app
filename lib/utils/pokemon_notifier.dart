@@ -1,6 +1,6 @@
 
-import 'package:demo_app/networks/pokemon/pokemon_model.dart';
-import 'package:demo_app/networks/pokemon/pokemon_request.dart';
+import 'package:demo_app/objects/pokemon_model.dart';
+import 'package:demo_app/networks/pokemon_request.dart';
 import 'package:flutter/material.dart';
 
 class PokemonNotifier extends ChangeNotifier {

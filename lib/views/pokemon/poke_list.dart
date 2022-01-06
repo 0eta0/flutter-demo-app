@@ -119,12 +119,14 @@ class _PokeListState extends State<PokeList> {
                 );
               } else {
                 return GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 16),
+                    padding: const EdgeInsets.all(16),
                     itemCount: itemCount(favs.favs.length, _currentPage) + (isFavoriteMode ? 0 : 1),
                     itemBuilder: (context, index) {
                       if (index == itemCount(favs.favs.length, _currentPage)) {
                         return Padding(
-                          padding: const EdgeInsets.all(16),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           child: OutlinedButton(
                             child: const Text('more'),
                             style: OutlinedButton.styleFrom(

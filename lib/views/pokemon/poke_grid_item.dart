@@ -23,13 +23,13 @@ class PokeGridItem extends StatelessWidget {
             child: Hero(
               tag: poke!.id,
               child: Container(
-                height: 100,
-                width: 100,
+                height: MediaQuery.of(context).size.width / 3 - 48,
+                width: MediaQuery.of(context).size.width / 3,
                 decoration: BoxDecoration(
                   color: (pokeTypeColors[poke!.types.first] ?? Colors.grey[100])?.withOpacity(.3),
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.fitHeight,
                     image: CachedNetworkImageProvider(
                       poke!.imageUrl,
                     ),

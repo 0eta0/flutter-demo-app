@@ -4,8 +4,15 @@ class ViewModeBottomSheet extends StatelessWidget {
   const ViewModeBottomSheet({
     Key? key,
     required this.favMode,
+    required this.gridMode,
+    required this.changeFabMode,
+    required this.changeGridMode,
   }) : super(key: key);
+
   final bool favMode;
+  final bool gridMode;
+  final Function(bool) changeFabMode;
+  final Function(bool) changeGridMode;
 
   String mainText(bool fav) {
     if (fav) {
@@ -31,10 +38,26 @@ class ViewModeBottomSheet extends StatelessWidget {
     }
   }
 
+  String displayModeTitle(bool grid) {
+    if (grid) {
+      return 'リスト表示に切り替え';
+    } else {
+      return 'グリッド表示に切り替え';
+    }
+  }
+
+  String displayModeSubtitle(bool grid) {
+    if (grid) {
+      return 'ポケモンをリスト表示します';
+    } else {
+      return 'ポケモンをグリッド表示します';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 350,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Center(
         child: Column(
@@ -66,7 +89,21 @@ class ViewModeBottomSheet extends StatelessWidget {
                 menuSubtitle(favMode),
               ),
               onTap: () {
-                Navigator.pop(context, true);
+                changeFabMode(favMode);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.swap_horiz),
+              title: Text(
+                displayModeTitle(gridMode),
+              ),
+              subtitle: Text(
+                displayModeSubtitle(gridMode),
+              ),
+              onTap: () {
+                changeGridMode(gridMode);
+                Navigator.pop(context);
               },
             ),
             OutlinedButton(

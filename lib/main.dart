@@ -1,6 +1,6 @@
-import 'package:demo_app/objects/favorite_notifier.dart';
-import 'package:demo_app/objects/pokemon_notifier.dart';
-import 'package:demo_app/objects/thememode_notifier.dart';
+import 'package:demo_app/models/favorite_notifier.dart';
+import 'package:demo_app/models/pokemon_notifier.dart';
+import 'package:demo_app/models/thememode_notifier.dart';
 import 'package:demo_app/utils/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_app/views/top_page.dart';

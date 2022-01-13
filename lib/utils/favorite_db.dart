@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:demo_app/consts/db.dart';
-import 'package:demo_app/objects/favorite_model.dart';
+import 'package:demo_app/models/favorite.dart';
 
 class FavoritesDb {
   static Future<Database> openDb() async {

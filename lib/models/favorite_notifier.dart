@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo_app/objects/favorite_model.dart';
+import 'package:demo_app/models/favorite.dart';
 import 'package:demo_app/utils/favorite_db.dart';
 
 class FavoriteNotifier extends ChangeNotifier {

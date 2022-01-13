@@ -1,7 +1,7 @@
-import 'package:demo_app/objects/favorite_model.dart';
-import 'package:demo_app/objects/pokemon_model.dart';
+import 'package:demo_app/models/favorite.dart';
+import 'package:demo_app/models/pokemon.dart';
 import 'package:demo_app/consts/poke_colors.dart';
-import 'package:demo_app/objects/favorite_notifier.dart';
+import 'package:demo_app/models/favorite_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';

@@ -1,5 +1,5 @@
 
-import 'package:demo_app/objects/pokemon_model.dart';
+import 'package:demo_app/models/pokemon.dart';
 import 'package:demo_app/networks/pokemon_request.dart';
 import 'package:flutter/material.dart';
 

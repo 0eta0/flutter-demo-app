@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo_app/views/pokemon/poke_list.dart';
+import 'package:demo_app/views/pokemon/pokemon_list_page.dart';
 import 'package:demo_app/views/settings/settings.dart';
 
 class TopPage extends StatefulWidget {

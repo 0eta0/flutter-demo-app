@@ -1,5 +1,5 @@
 import 'package:demo_app/models/favorite_notifier.dart';
-import 'package:demo_app/models/pokemon_notifier.dart';
+import 'package:demo_app/repositories/pokemon_notifier.dart';
 import 'package:demo_app/models/thememode_notifier.dart';
 import 'package:demo_app/utils/preferences.dart';
 import 'package:flutter/material.dart';

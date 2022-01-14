@@ -1,20 +1,20 @@
 import 'package:demo_app/consts/poke_api.dart';
 import 'package:demo_app/models/favorite_notifier.dart';
-import 'package:demo_app/models/pokemon_notifier.dart';
+import 'package:demo_app/repositories/pokemon_notifier.dart';
 import 'package:demo_app/views/bottom_sheet/viewmode_bottomsheet.dart';
 import 'package:flutter/material.dart';
-import 'package:demo_app/views/pokemon/poke_list_item.dart';
+import 'package:demo_app/views/pokemon/pokemon_list_item.dart';
 import 'package:provider/provider.dart';
 import 'package:demo_app/models/favorite.dart';
-import 'package:demo_app/views/pokemon/poke_grid_item.dart';
+import 'package:demo_app/views/pokemon/pokemon_grid_item.dart';
 
-class PokeList extends StatefulWidget {
-  const PokeList({Key? key}) : super(key: key);
+class PokemonList extends StatefulWidget {
+  const PokemonList({Key? key}) : super(key: key);
   @override
   _PokeListState createState() => _PokeListState();
 }
 
-class _PokeListState extends State<PokeList> {
+class _PokeListState extends State<PokemonList> {
   static const int pageSize = 30;
   bool isFavoriteMode = false;
   bool isGridMode = true;

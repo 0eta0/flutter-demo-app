@@ -24,7 +24,7 @@ class PokemonServiceImpl implements PokemonService {
     final baseIndex = page * limit + 1;
     final maxIndex = baseIndex + limit;
     final List<Pokemon> list = [];
-    for (int index = baseIndex; index <= maxIndex; index++) {
+    for (int index = baseIndex; index < maxIndex; index++) {
       final item = await get(id: index);
       list.add(item);
     }

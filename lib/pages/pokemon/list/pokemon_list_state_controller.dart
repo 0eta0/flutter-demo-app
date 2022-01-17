@@ -12,8 +12,13 @@ class PokemonListStateController extends StateNotifier<PokemonListState> {
   final PokemonRepository _repos;
 
   Future<void> init() async {
-    List<Pokemon> value = await _repos.getList(page: 0);
+    List<Pokemon> value = await _repos.getList(page: state.page);
     state = state.copyWith(list: value);
+  }
+
+  Future<void> getNext() async {
+    List<Pokemon> value = await _repos.getList(page: state.page + 1);
+    state = state.copyWith(list: state.list + value, page: state.page + 1);
   }
 }
 

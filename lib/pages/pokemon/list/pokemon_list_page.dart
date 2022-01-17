@@ -53,7 +53,9 @@ class PokemonListPage extends HookConsumerWidget {
               itemBuilder: (context, index) {
                 if (list.length <= index) {
                   return OutlinedButton(
-                    onPressed: () {  },
+                    onPressed: () {
+                      controller.getNext();
+                    },
                     child: const Text('more'),);
                 } else {
                   return PokemonListItem(poke: list[index]);
@@ -76,7 +78,9 @@ class PokemonListPage extends HookConsumerWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                      onPressed: () { },
+                      onPressed: () {
+                        controller.getNext();
+                      },
                     ),
                   );
                 } else {

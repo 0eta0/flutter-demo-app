@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$PokemonListStateTearOff {
   const _$PokemonListStateTearOff();
 
-  _PokemonListState call({List<Pokemon> list = const <Pokemon>[]}) {
+  _PokemonListState call(
+      {int page = 0, List<Pokemon> list = const <Pokemon>[]}) {
     return _PokemonListState(
+      page: page,
       list: list,
     );
   }
@@ -30,6 +32,7 @@ const $PokemonListState = _$PokemonListStateTearOff();
 
 /// @nodoc
 mixin _$PokemonListState {
+  int get page => throw _privateConstructorUsedError;
   List<Pokemon> get list => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,7 +45,7 @@ abstract class $PokemonListStateCopyWith<$Res> {
   factory $PokemonListStateCopyWith(
           PokemonListState value, $Res Function(PokemonListState) then) =
       _$PokemonListStateCopyWithImpl<$Res>;
-  $Res call({List<Pokemon> list});
+  $Res call({int page, List<Pokemon> list});
 }
 
 /// @nodoc
@@ -56,9 +59,14 @@ class _$PokemonListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? page = freezed,
     Object? list = freezed,
   }) {
     return _then(_value.copyWith(
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
       list: list == freezed
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
@@ -74,7 +82,7 @@ abstract class _$PokemonListStateCopyWith<$Res>
           _PokemonListState value, $Res Function(_PokemonListState) then) =
       __$PokemonListStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<Pokemon> list});
+  $Res call({int page, List<Pokemon> list});
 }
 
 /// @nodoc
@@ -90,9 +98,14 @@ class __$PokemonListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? page = freezed,
     Object? list = freezed,
   }) {
     return _then(_PokemonListState(
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
       list: list == freezed
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
@@ -104,15 +117,18 @@ class __$PokemonListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PokemonListState implements _PokemonListState {
-  const _$_PokemonListState({this.list = const <Pokemon>[]});
+  const _$_PokemonListState({this.page = 0, this.list = const <Pokemon>[]});
 
+  @JsonKey()
+  @override
+  final int page;
   @JsonKey()
   @override
   final List<Pokemon> list;
 
   @override
   String toString() {
-    return 'PokemonListState(list: $list)';
+    return 'PokemonListState(page: $page, list: $list)';
   }
 
   @override
@@ -120,12 +136,15 @@ class _$_PokemonListState implements _PokemonListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PokemonListState &&
+            const DeepCollectionEquality().equals(other.page, page) &&
             const DeepCollectionEquality().equals(other.list, list));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(list));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(page),
+      const DeepCollectionEquality().hash(list));
 
   @JsonKey(ignore: true)
   @override
@@ -134,8 +153,11 @@ class _$_PokemonListState implements _PokemonListState {
 }
 
 abstract class _PokemonListState implements PokemonListState {
-  const factory _PokemonListState({List<Pokemon> list}) = _$_PokemonListState;
+  const factory _PokemonListState({int page, List<Pokemon> list}) =
+      _$_PokemonListState;
 
+  @override
+  int get page;
   @override
   List<Pokemon> get list;
   @override

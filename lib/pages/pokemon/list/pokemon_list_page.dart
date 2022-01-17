@@ -46,19 +46,46 @@ class PokemonListPage extends HookConsumerWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-        itemCount: list.length + 1,
-        itemBuilder: (context, index) {
-          if (list.length <= index ) {
-            return OutlinedButton(
-              onPressed: () {  },
-              child: const Text('more'),);
-          } else {
-            return PokemonListItem(poke: list[index]);
-          }
-        },
-      )
+      body: mode == DisplayMode.list
+          ? ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+              itemCount: list.length + 1,
+              itemBuilder: (context, index) {
+                if (list.length <= index) {
+                  return OutlinedButton(
+                    onPressed: () {  },
+                    child: const Text('more'),);
+                } else {
+                  return PokemonListItem(poke: list[index]);
+                }
+              },
+            )
+          : GridView.builder(
+              gridDelegate:
+              const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 16),
+              padding: const EdgeInsets.all(16),
+              itemCount: list.length + 1,
+              itemBuilder: (context, index) {
+                if (list.length <= index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: OutlinedButton(
+                      child: const Text('more'),
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      onPressed: () { },
+                    ),
+                  );
+                } else {
+                  return PokemonGridItem(
+                    poke: list[index],
+                  );
+                }
+              }
+          )
     );
   }
 }

@@ -58,7 +58,7 @@ class ViewModeBottomSheet extends HookConsumerWidget {
     final mode = ref.watch(displayModeStateControllerProvider);
 
     return Container(
-      height: 350,
+      height: 150,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Center(
         child: Column(

@@ -2,6 +2,7 @@ import 'package:demo_app/models/favorite.dart';
 import 'package:demo_app/models/pokemon.dart';
 import 'package:demo_app/consts/poke_colors.dart';
 import 'package:demo_app/models/favorite_notifier.dart';
+import 'package:demo_app/pages/pokemon/detail/pokemon_detail_state_controller.dart';
 import 'package:demo_app/pages/pokemon/list/pokemon_list_state_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -15,8 +16,8 @@ class PokemonDetailPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ProviderScope(overrides: [
-      pokemonListStateControllerProvider.overrideWithProvider(pokemonListStateControllerProviderFamily(data!))
-    ], child: const PokemonItem());
+      pokemonStateControllerProvider.overrideWithProvider(pokemonStateControllerProviderFamily(data!))
+    ], child: PokemonItem());
   }
 }
 
@@ -25,7 +26,7 @@ class PokemonItem extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(pokemonListStateControllerProvider.select((value) => value.data))!;
+    final data = ref.watch(pokemonStateControllerProvider.select((value) => value.data))!;
 
     return Scaffold(
       body: Container(

@@ -8,6 +8,6 @@ part "theme_mode_state.freezed.dart";
 @freezed
 abstract class ThemeModeState with _$ThemeModeState {
   const factory ThemeModeState({
-    @Default(loadThemeMode(null)) ThemeMode themeMode,
+    @Default(ThemeMode.system) ThemeMode themeMode,
   }) = _ThemeModeState;
 }

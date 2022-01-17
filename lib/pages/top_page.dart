@@ -1,6 +1,7 @@
 import 'package:demo_app/pages/pokemon/list/pokemon_list_page.dart';
-import 'package:demo_app/pages/settings/settings.dart';
+import 'package:demo_app/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class TopPageState extends State<TopPage> {
     return Scaffold(
       body: SafeArea(
         child: IndexedStack(
-          children: const [PokemonList(), Settings()],
+          children: const [PokemonListPage(), SettingsPage()],
           index: currentNb
         )
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:demo_app/models/pokemon.dart';
 import 'package:demo_app/consts/poke_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PokemonGridItem extends StatelessWidget {
   const PokemonGridItem({Key? key, required this.poke}) : super(key: key);

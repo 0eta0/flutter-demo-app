@@ -21,7 +21,7 @@ class PokemonServiceImpl implements PokemonService {
 
   @override
   Future<List<Pokemon>> getList({ required int page, required int limit }) async {
-    final baseIndex = page * limit;
+    final baseIndex = page * limit + 1;
     final maxIndex = baseIndex + limit;
     final List<Pokemon> list = [];
     for (int index = baseIndex; index <= maxIndex; index++) {

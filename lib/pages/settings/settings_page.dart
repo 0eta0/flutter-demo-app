@@ -1,38 +1,36 @@
 import 'package:demo_app/pages/settings/theme/theme_mode.dart';
+import 'package:demo_app/pages/settings/theme/theme_mode_state_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_app/utils/preferences.dart';
 import 'package:demo_app/models/thememode_notifier.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({Key? key}) : super(key: key);
+class SettingsPage extends HookConsumerWidget {
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  _SettingsState createState() => _SettingsState();
-}
-
-class _SettingsState extends State<Settings> {
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<ThemeModeNotifier>(
-      builder: (context, mode, child) => ListView(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mode = ref.watch(themeModeStateControllerProvider);
+    final theme = ref.read(themeModeStateControllerProvider.notifier);
+    return ListView(
         children: [
           ListTile(
             leading: const Icon(Icons.lightbulb),
             title: const Text("Dark/Light Mode"),
             trailing: Text(
-              (mode.mode == ThemeMode.system)
+              (mode.themeMode == ThemeMode.system)
               ? "System"
-              : (mode.mode == ThemeMode.light) ? "Light" : "Dark"
+              : (mode.themeMode == ThemeMode.light) ? "Light" : "Dark"
             ),
             onTap: () async {
               var newMode = await Navigator.of(context).push<ThemeMode>(
                 MaterialPageRoute(
-                  builder: (context) => ThemeModeSelectionPage(mode: mode.mode),
+                  builder: (context) => ThemeModeSelectionPage(mode: mode.themeMode),
                 ),
               );
               if (newMode != null) {
-                mode.update(newMode);
+                theme.update(newMode);
               }
             },
           ),
@@ -53,6 +51,6 @@ class _SettingsState extends State<Settings> {
             onChanged: (yes) => {},
           ),
         ],
-    ));
+    );
   }
 }

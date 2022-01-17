@@ -4,6 +4,10 @@ import 'package:demo_app/models/pokemon.dart';
 import 'package:demo_app/services/pokemon_service.dart';
 import "package:hooks_riverpod/hooks_riverpod.dart";
 
+final pokemonRepositoryProvider = Provider.autoDispose<PokemonRepository>(
+      (ref) => PokemonRepositoryImpl(ref.read(pokemonServiceProvider)),
+);
+
 abstract class PokemonRepository {
 
   Future<Pokemon> get({ required int id });

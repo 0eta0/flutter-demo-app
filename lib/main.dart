@@ -1,9 +1,8 @@
 import 'package:demo_app/models/favorite_notifier.dart';
-import 'package:demo_app/repositories/pokemon_notifier.dart';
+import 'package:demo_app/pages/top_page.dart';
 import 'package:demo_app/models/thememode_notifier.dart';
 import 'package:demo_app/utils/preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:demo_app/views/top_page.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

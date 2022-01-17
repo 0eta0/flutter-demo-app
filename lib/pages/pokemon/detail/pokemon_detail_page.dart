@@ -9,28 +9,26 @@ import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class PokemonDetailPage extends HookConsumerWidget {
-  const PokemonDetailPage({Key? key, })
+  const PokemonDetailPage({Key? key, this.data }) : super(key: key);
   final Pokemon? data;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ProviderScope(overrides: [
       pokemonListStateControllerProvider.overrideWithProvider(pokemonListStateControllerProviderFamily(data!))
-    ], child: PokemonList)
+    ], child: PokemonItem());
   }
 }
 
-class PokemonDetailPage2 extends StatelessWidget {
-  const PokemonDetailPage({Key? key, required this.poke}) : super(key: key);
-
-  final Pokemon poke;
+class PokemonItem extends HookConsumerWidget {
 
   @override
-  Widget build(BuildContext context) {
-    return Consumer<FavoriteNotifier>(
-      builder: (context, favs, child) => Scaffold(
-        body: Container(
-          color: (pokeTypeColors[poke.types.first] ?? Colors.grey[100])?.withOpacity(.5),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final data = ref.watch(pokemonListStateControllerProvider.select((value) => value.data))!;
+
+    return Scaffold(
+      body: Container(
+          color: (pokeTypeColors[data.types.first] ?? Colors.grey[100])?.withOpacity(.5),
           child: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -40,14 +38,14 @@ class PokemonDetailPage2 extends StatelessWidget {
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () => Navigator.pop(context),
                   ),
-                  trailing: IconButton(
-                    icon: favs.isExist(poke.id)
-                      ? const Icon(Icons.star, color: Colors.orangeAccent)
-                      : const Icon(Icons.star_outline),
-                    onPressed: () => {
-                      favs.toggle(Favorite(pokeId: poke.id))
-                    },
-                  ),
+                  // trailing: IconButton(
+                  //   icon: favs.isExist(data.id)
+                  //     ? const Icon(Icons.star, color: Colors.orangeAccent)
+                  //     : const Icon(Icons.star_outline),
+                  //   onPressed: () => {
+                  //     favs.toggle(Favorite(pokeId: data.id))
+                  //   },
+                  // ),
                 ),
                 const Spacer(),
                 Stack(
@@ -65,11 +63,11 @@ class PokemonDetailPage2 extends StatelessWidget {
                       ),
                     ),
                     Hero(
-                      tag: poke.id,
+                      tag: data.id,
                       child: Container(
                         padding: const EdgeInsets.all(32),
                         child: CachedNetworkImage(
-                          imageUrl: poke.imageUrl,
+                          imageUrl: data.imageUrl,
                           height: 250,
                           width: 250,
                         ),
@@ -84,21 +82,21 @@ class PokemonDetailPage2 extends StatelessWidget {
                     color: Colors.white.withOpacity(.5),
                   ),
                   child: Text(
-                    '#${poke.id.toString().padLeft(3, "0")}',
+                    '#${data.id.toString().padLeft(3, "0")}',
                     style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(
-                    '${poke.name.substring(0, 1).toUpperCase()}${poke.name.substring(1)}',
+                    '${data.name.substring(0, 1).toUpperCase()}${data.name.substring(1)}',
                     style: const TextStyle(
                         fontSize: 36, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: poke.types.map(
+                  children: data.types.map(
                     (type) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Chip(
@@ -121,7 +119,6 @@ class PokemonDetailPage2 extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

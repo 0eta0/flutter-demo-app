@@ -1,12 +1,11 @@
 import 'package:demo_app/consts/poke_api.dart';
 import 'package:demo_app/models/favorite_notifier.dart';
-import 'package:demo_app/repositories/pokemon_notifier.dart';
-import 'package:demo_app/views/bottom_sheet/viewmode_bottomsheet.dart';
+import 'package:demo_app/pages/pokemon/list/item/pokemon_grid_item.dart';
+import 'package:demo_app/pages/pokemon/list/item/pokemon_list_item.dart';
+import 'package:demo_app/pages/bottom_sheet/viewmode_bottomsheet.dart';
 import 'package:flutter/material.dart';
-import 'package:demo_app/views/pokemon/pokemon_list_item.dart';
 import 'package:provider/provider.dart';
 import 'package:demo_app/models/favorite.dart';
-import 'package:demo_app/views/pokemon/pokemon_grid_item.dart';
 
 class PokemonList extends StatefulWidget {
   const PokemonList({Key? key}) : super(key: key);
@@ -111,7 +110,7 @@ class _PokeListState extends State<PokemonList> {
                             : () => {setState(() => _currentPage += 1)},
                       );
                     } else {
-                      return PokeListItem(
+                      return PokemonListItem(
                         poke: pokes.byId(itemId(favs.favs, index)),
                       );
                     }
@@ -140,7 +139,7 @@ class _PokeListState extends State<PokemonList> {
                           ),
                         );
                       } else {
-                        return PokeGridItem(
+                        return PokemonGridItem(
                           poke: pokes.byId(itemId(favs.favs, index)),
                         );
                       }

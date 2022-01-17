@@ -1,11 +1,11 @@
+import 'package:demo_app/pages/pokemon/detail/pokemon_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_app/models/pokemon.dart';
-import 'package:demo_app/views/pokemon/pokemon_detail_page.dart';
 import 'package:demo_app/consts/poke_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class PokeGridItem extends StatelessWidget {
-  const PokeGridItem({Key? key, required this.poke}) : super(key: key);
+class PokemonGridItem extends StatelessWidget {
+  const PokemonGridItem({Key? key, required this.poke}) : super(key: key);
   final Pokemon? poke;
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class PokeGridItem extends StatelessWidget {
             onTap: () => {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => PokeDetail(poke: poke!),
+                  builder: (BuildContext context) => PokemonDetailPage(data: poke),
                 ),
               ),
             },

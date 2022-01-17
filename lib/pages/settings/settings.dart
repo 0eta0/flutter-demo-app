@@ -1,5 +1,5 @@
+import 'package:demo_app/pages/settings/theme/theme_mode.dart';
 import 'package:flutter/material.dart';
-import 'package:demo_app/views/settings/theme/theme_mode.dart';
 import 'package:demo_app/utils/preferences.dart';
 import 'package:demo_app/models/thememode_notifier.dart';
 import 'package:provider/provider.dart';

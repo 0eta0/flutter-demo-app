@@ -11,22 +11,23 @@ class SettingsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mode = ref.watch(themeModeStateControllerProvider);
-    final theme = ref.read(themeModeStateControllerProvider.notifier);
+    final themeMode = ref.watch(themeModeStateControllerProvider.select((value) => value.themeMode));
+    final theme = ref.watch(themeModeStateControllerProvider.notifier);
+
     return ListView(
         children: [
           ListTile(
             leading: const Icon(Icons.lightbulb),
             title: const Text("Dark/Light Mode"),
             trailing: Text(
-              (mode.themeMode == ThemeMode.system)
+              (themeMode == ThemeMode.system)
               ? "System"
-              : (mode.themeMode == ThemeMode.light) ? "Light" : "Dark"
+              : (themeMode == ThemeMode.light) ? "Light" : "Dark"
             ),
             onTap: () async {
               var newMode = await Navigator.of(context).push<ThemeMode>(
                 MaterialPageRoute(
-                  builder: (context) => ThemeModeSelectionPage(mode: mode.themeMode),
+                  builder: (context) => ThemeModeSelectionPage(mode: themeMode),
                 ),
               );
               if (newMode != null) {

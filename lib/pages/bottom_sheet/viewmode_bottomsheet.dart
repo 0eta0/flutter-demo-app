@@ -1,18 +1,16 @@
+import 'package:demo_app/pages/pokemon/list/pokemon_list_state_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ViewModeBottomSheet extends StatelessWidget {
+class ViewModeBottomSheet extends HookConsumerWidget {
   const ViewModeBottomSheet({
     Key? key,
-    required this.favMode,
+    // required this.favMode,
     required this.gridMode,
-    required this.changeFabMode,
-    required this.changeGridMode,
   }) : super(key: key);
 
-  final bool favMode;
+  // final bool favMode;
   final bool gridMode;
-  final Function(bool) changeFabMode;
-  final Function(bool) changeGridMode;
 
   String mainText(bool fav) {
     if (fav) {
@@ -55,7 +53,10 @@ class ViewModeBottomSheet extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(displayModeStateControllerProvider.notifier);
+    final mode = ref.watch(displayModeStateControllerProvider);
+
     return Container(
       height: 350,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -70,29 +71,29 @@ class ViewModeBottomSheet extends StatelessWidget {
                 color: Theme.of(context).backgroundColor,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-              child: Text(
-                mainText(favMode),
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.swap_horiz),
-              title: Text(
-                menuTitle(favMode),
-              ),
-              subtitle: Text(
-                menuSubtitle(favMode),
-              ),
-              onTap: () {
-                changeFabMode(favMode);
-                Navigator.pop(context);
-              },
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            //   child: Text(
+            //     mainText(favMode),
+            //     style: const TextStyle(
+            //       fontSize: 20,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+            // ListTile(
+            //   leading: const Icon(Icons.swap_horiz),
+            //   title: Text(
+            //     menuTitle(favMode),
+            //   ),
+            //   subtitle: Text(
+            //     menuSubtitle(favMode),
+            //   ),
+            //   onTap: () {
+            //     changeFabMode(favMode);
+            //     Navigator.pop(context);
+            //   },
+            // ),
             ListTile(
               leading: const Icon(Icons.swap_horiz),
               title: Text(
@@ -102,7 +103,7 @@ class ViewModeBottomSheet extends StatelessWidget {
                 displayModeSubtitle(gridMode),
               ),
               onTap: () {
-                changeGridMode(gridMode);
+                controller.update(gridMode ? DisplayMode.list : DisplayMode.grid);
                 Navigator.pop(context);
               },
             ),

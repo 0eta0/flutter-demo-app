@@ -16,11 +16,12 @@ class PokemonDetailPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ProviderScope(overrides: [
       pokemonListStateControllerProvider.overrideWithProvider(pokemonListStateControllerProviderFamily(data!))
-    ], child: PokemonItem());
+    ], child: const PokemonItem());
   }
 }
 
 class PokemonItem extends HookConsumerWidget {
+  const PokemonItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

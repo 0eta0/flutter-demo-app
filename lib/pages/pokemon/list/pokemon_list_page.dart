@@ -1,6 +1,4 @@
-import 'package:demo_app/models/pokemon.dart';
 import 'package:demo_app/pages/bottom_sheet/viewmode_bottomsheet.dart';
-import 'package:demo_app/pages/pokemon/detail/pokemon_detail_page.dart';
 import 'package:demo_app/pages/pokemon/list/item/pokemon_list_item.dart';
 import 'package:demo_app/pages/pokemon/list/pokemon_list_state_controller.dart';
 import 'package:flutter/material.dart';

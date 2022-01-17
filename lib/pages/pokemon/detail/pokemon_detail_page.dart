@@ -3,10 +3,8 @@ import 'package:demo_app/models/pokemon.dart';
 import 'package:demo_app/consts/poke_colors.dart';
 import 'package:demo_app/models/favorite_notifier.dart';
 import 'package:demo_app/pages/pokemon/detail/pokemon_detail_state_controller.dart';
-import 'package:demo_app/pages/pokemon/list/pokemon_list_state_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class PokemonDetailPage extends HookConsumerWidget {

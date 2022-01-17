@@ -2,7 +2,6 @@ import 'package:demo_app/pages/settings/theme/theme_mode.dart';
 import 'package:demo_app/pages/settings/theme/theme_mode_state_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_app/utils/preferences.dart';
-import 'package:demo_app/models/thememode_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
 
